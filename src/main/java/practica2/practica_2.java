@@ -44,10 +44,15 @@ public class practica_2 extends javax.swing.JFrame {
 
         jPanel2.setPreferredSize(new java.awt.Dimension(380, 100));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Cantidad\n"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
         jPanel5.setPreferredSize(new java.awt.Dimension(350, 64));
 
         jTextField1.setText("Cantidad");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -65,7 +70,7 @@ public class practica_2 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Tasa de cambio"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
 
         jTextField2.setText("Conversion");
 
@@ -106,7 +111,6 @@ public class practica_2 extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/46246.png"))); // NOI18N
         jButton2.setAlignmentX(0.5F);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         jButton2.setDefaultCapable(false);
@@ -119,7 +123,7 @@ public class practica_2 extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Dolares"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
         jPanel4.setPreferredSize(new java.awt.Dimension(320, 64));
 
         jTextField3.setText("jTextField3");
@@ -141,12 +145,12 @@ public class practica_2 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Euros"));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
         jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel7.setPreferredSize(new java.awt.Dimension(320, 64));
 
         jTextField4.setText("jTextField3");
-        jTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -248,6 +252,10 @@ public class practica_2 extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
