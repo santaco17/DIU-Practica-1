@@ -47,7 +47,8 @@ public class practica_2 extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Cantidad\n"));
         jPanel5.setPreferredSize(new java.awt.Dimension(350, 64));
 
-        jTextField1.setText(" 434334343");
+
+        jTextField1.setText("Cantidad");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -70,7 +71,7 @@ public class practica_2 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Tasa de cambio"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Tasa de Cambio"));
 
         jTextField2.setText("Conversion");
 
@@ -111,7 +112,6 @@ public class practica_2 extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/46246.png"))); // NOI18N
         jButton2.setAlignmentX(0.5F);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         jButton2.setDefaultCapable(false);
@@ -128,6 +128,7 @@ public class practica_2 extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(320, 64));
 
         jTextField3.setText("jTextField3");
+        jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -151,7 +152,7 @@ public class practica_2 extends javax.swing.JFrame {
         jPanel7.setPreferredSize(new java.awt.Dimension(320, 64));
 
         jTextField4.setText("jTextField3");
-        jTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
