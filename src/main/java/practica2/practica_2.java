@@ -47,8 +47,7 @@ public class practica_2 extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Cantidad\n"));
         jPanel5.setPreferredSize(new java.awt.Dimension(350, 64));
 
-
-        jTextField1.setText("Cantidad");
+        jTextField1.setText(" Cantidad1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
