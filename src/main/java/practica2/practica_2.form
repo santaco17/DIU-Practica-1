@@ -133,9 +133,11 @@
               <SubComponents>
                 <Component class="javax.swing.JFormattedTextField" name="amountInputField">
                   <Properties>
+
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new AbstractFormatterFactory() {&#xd;&#xa;&#xd;&#xa;        @Override&#xd;&#xa;        public AbstractFormatter getFormatter(JFormattedTextField tf) {&#xd;&#xa;            NumberFormat format = DecimalFormat.getInstance();&#xd;&#xa;            format.setMinimumFractionDigits(2);&#xd;&#xa;            format.setMaximumFractionDigits(2);&#xd;&#xa;            format.setRoundingMode(RoundingMode.HALF_UP);&#xd;&#xa;            InternationalFormatter formatter = new InternationalFormatter(format);&#xd;&#xa;            formatter.setAllowsInvalid(false);&#xd;&#xa;            formatter.setMinimum(0.0);&#xd;&#xa;            formatter.setMaximum(10000.0);&#xd;&#xa;            return formatter;&#xd;&#xa;        }&#xd;&#xa;    }" type="code"/>
                     </Property>
+                    
                   </Properties>
                 </Component>
               </SubComponents>

@@ -64,6 +64,7 @@ public class practica_2 extends javax.swing.JFrame {
         amountInputPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Cantidad\n"));
         amountInputPanel.setPreferredSize(new java.awt.Dimension(350, 64));
 
+
         amountInputField.setFormatterFactory(new AbstractFormatterFactory() {
 
             @Override
@@ -77,6 +78,8 @@ public class practica_2 extends javax.swing.JFrame {
                 formatter.setMinimum(0.0);
                 formatter.setMaximum(10000.0);
                 return formatter;
+
+
             }
         });
 
