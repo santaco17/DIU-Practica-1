@@ -5,21 +5,16 @@
  */
 package practica2;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JFormattedTextField.AbstractFormatterFactory;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.DocumentFilter;
 import javax.swing.text.InternationalFormatter;
-import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -32,6 +27,7 @@ public class practica_2 extends javax.swing.JFrame {
      */
     public practica_2() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -56,8 +52,14 @@ public class practica_2 extends javax.swing.JFrame {
         leftResultPanel = new javax.swing.JPanel();
         leftResultField = new javax.swing.JTextField();
         convertButton2 = new javax.swing.JButton();
+        languageBar = new javax.swing.JMenuBar();
+        esOpt = new javax.swing.JMenu();
+        enOpt = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Conversor EUR(€) - USD($)");
+
+        jPanel1.setName(""); // NOI18N
 
         upperPanel.setPreferredSize(new java.awt.Dimension(380, 100));
 
@@ -160,7 +162,8 @@ public class practica_2 extends javax.swing.JFrame {
         rightResultPanel.setPreferredSize(new java.awt.Dimension(320, 64));
 
         rightResultField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        rightResultField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        rightResultField.setBorder(null);
+        rightResultField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         rightResultField.setEnabled(false);
 
         javax.swing.GroupLayout rightResultPanelLayout = new javax.swing.GroupLayout(rightResultPanel);
@@ -179,7 +182,8 @@ public class practica_2 extends javax.swing.JFrame {
         leftResultPanel.setPreferredSize(new java.awt.Dimension(320, 64));
 
         leftResultField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        leftResultField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        leftResultField.setBorder(null);
+        leftResultField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         leftResultField.setEnabled(false);
 
         javax.swing.GroupLayout leftResultPanelLayout = new javax.swing.GroupLayout(leftResultPanel);
@@ -258,6 +262,30 @@ public class practica_2 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        languageBar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        esOpt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        esOpt.setLabel("ES");
+        esOpt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                esOptMouseClicked(evt);
+            }
+        });
+        languageBar.add(esOpt);
+
+        enOpt.setActionCommand("");
+        enOpt.setBorderPainted(true);
+        enOpt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        enOpt.setLabel("EN");
+        enOpt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enOptMouseClicked(evt);
+            }
+        });
+        languageBar.add(enOpt);
+
+        setJMenuBar(languageBar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -266,7 +294,7 @@ public class practica_2 extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -275,7 +303,7 @@ public class practica_2 extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -283,20 +311,33 @@ public class practica_2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertButtonActionPerformed
-        /**
-         * Sequence
-         * 
-         * Set conversion variable to "true"
-         * Check whether text on both ratio and amount fields fulfills its correct format
-         * Parse each parameter into a double value using Double class
-         * Update both result fields
-         */
         eurosToDollars();
     }//GEN-LAST:event_convertButtonActionPerformed
 
     private void convertButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertButton2ActionPerformed
         dollarsToEuros();
     }//GEN-LAST:event_convertButton2ActionPerformed
+
+    
+    /**
+     * Language functions
+     */
+    
+    private void enOptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enOptMouseClicked
+        this.amountInputPanel.setBorder(BorderFactory.createTitledBorder("Amount"));
+        this.ratioInputPanel.setBorder(BorderFactory.createTitledBorder("Change Ratio (EUR -> USD)"));
+        this.rightResultPanel.setBorder(BorderFactory.createTitledBorder("Dollars"));
+        this.esOpt.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        this.enOpt.setFont(new Font("Segoe UI", Font.BOLD, 18));
+    }//GEN-LAST:event_enOptMouseClicked
+
+    private void esOptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esOptMouseClicked
+        this.amountInputPanel.setBorder(BorderFactory.createTitledBorder("Cantidad"));
+        this.ratioInputPanel.setBorder(BorderFactory.createTitledBorder("Tasa de cambio (EUR -> USD)"));
+        this.rightResultPanel.setBorder(BorderFactory.createTitledBorder("Dólares"));
+        this.esOpt.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        this.enOpt.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+    }//GEN-LAST:event_esOptMouseClicked
 
     
     
@@ -342,7 +383,10 @@ public class practica_2 extends javax.swing.JFrame {
     private javax.swing.JPanel amountInputPanel;
     private javax.swing.JButton convertButton;
     private javax.swing.JButton convertButton2;
+    private javax.swing.JMenu enOpt;
+    private javax.swing.JMenu esOpt;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuBar languageBar;
     private javax.swing.JTextField leftResultField;
     private javax.swing.JPanel leftResultPanel;
     private javax.swing.JPanel lowerPanel;
@@ -352,32 +396,61 @@ public class practica_2 extends javax.swing.JFrame {
     private javax.swing.JPanel rightResultPanel;
     private javax.swing.JPanel upperPanel;
     // End of variables declaration//GEN-END:variables
-    private boolean status = false;
 
+    //Logic functions
     private void dollarsToEuros() {
-        this.rightResultField.setText(this.amountInputField.getText());
-        String strAmount = this.formatToDouble(this.amountInputField.getText());
-        String strRatio = this.formatToDouble(this.ratioInputField.getText());
-        double amount = (strAmount.equals("")) ? 0.00 : Double.parseDouble(strAmount);
-        double ratio = (strRatio.equals("")) ? 0.00 : Double.parseDouble(strRatio);
-        double result = (ratio == 0.00) ? 0.00 : amount*(1/ratio);
-        this.leftResultField.setText(String.format("%,.2f", result));
+        this.rightResultField.setText(this.getAmountFieldToText()+ " USD ($)");
+        this.leftResultField.setText(String.format("%,.2f", this.convertUsdToEur())+ " EUR (€)");
+        updateFxRL();
     }
 
     private void eurosToDollars() {
-        this.leftResultField.setText(this.amountInputField.getText());
+        this.leftResultField.setText(this.getAmountFieldToText()+ " EUR (€)");
+        this.rightResultField.setText(String.format("%,.2f", this.convertEurToUsd()) + " USD ($)");
+        updateFxLR();
+    }
+    
+
+    //Conversion functions
+    private double convertUsdToEur() {
         String strAmount = this.formatToDouble(this.amountInputField.getText());
         String strRatio = this.formatToDouble(this.ratioInputField.getText());
         double amount = (strAmount.equals("")) ? 0.00 : Double.parseDouble(strAmount);
         double ratio = (strRatio.equals("")) ? 0.00 : Double.parseDouble(strRatio);
-        double result = amount*ratio;
-        this.rightResultField.setText(String.format("%,.2f", result));
+        return (ratio == 0.00) ? 0.00 : amount*(1/ratio);
     }
+
+    private double convertEurToUsd() {
+        String strAmount = this.formatToDouble(this.amountInputField.getText());
+        String strRatio = this.formatToDouble(this.ratioInputField.getText());
+        double amount = (strAmount.equals("")) ? 0.00 : Double.parseDouble(strAmount);
+        double ratio = (strRatio.equals("")) ? 0.00 : Double.parseDouble(strRatio);
+        return amount*ratio;
+    }    
     
     private String formatToDouble(String number){
         String res = number.replace(".", ":");
         res = res.replace(",", ".");
         res = res.replace(":", "");
         return res;
+    }
+
+    //Graphic functions
+    private void updateFxLR() {
+        this.convertButton.setBackground(Color.black);
+        this.convertButton.setForeground(Color.white);
+        this.convertButton2.setBackground(new Color(240,240,240));
+        this.convertButton2.setForeground(Color.black);
+    }
+
+    private void updateFxRL() {
+        this.convertButton2.setBackground(Color.black);
+        this.convertButton2.setForeground(Color.white);
+        this.convertButton.setBackground(new Color(240,240,240));
+        this.convertButton.setForeground(Color.black);
+    }
+
+    private String getAmountFieldToText() {
+        return (this.amountInputField.getText().equals("")) ? "0.00" : this.amountInputField.getText();
     }
 }
