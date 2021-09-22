@@ -20,12 +20,12 @@ import javax.swing.text.InternationalFormatter;
  *
  * @author santa
  */
-public class practica_2 extends javax.swing.JFrame {
+public class Conversor extends javax.swing.JFrame {
 
     /**
      * Creates new form practica_2
      */
-    public practica_2() {
+    public Conversor() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -41,17 +41,15 @@ public class practica_2 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         upperPanel = new javax.swing.JPanel();
-        amountInputPanel = new javax.swing.JPanel();
-        amountInputField = new javax.swing.JFormattedTextField();
         ratioInputPanel = new javax.swing.JPanel();
         ratioInputField = new javax.swing.JFormattedTextField();
-        lowerPanel = new javax.swing.JPanel();
         convertButton = new javax.swing.JButton();
+        convertButton2 = new javax.swing.JButton();
+        lowerPanel = new javax.swing.JPanel();
         rightResultPanel = new javax.swing.JPanel();
         rightResultField = new javax.swing.JTextField();
-        leftResultPanel = new javax.swing.JPanel();
-        leftResultField = new javax.swing.JTextField();
-        convertButton2 = new javax.swing.JButton();
+        amountInputPanel = new javax.swing.JPanel();
+        amountInputField = new javax.swing.JFormattedTextField();
         languageBar = new javax.swing.JMenuBar();
         esOpt = new javax.swing.JMenu();
         enOpt = new javax.swing.JMenu();
@@ -62,6 +60,110 @@ public class practica_2 extends javax.swing.JFrame {
         jPanel1.setName(""); // NOI18N
 
         upperPanel.setPreferredSize(new java.awt.Dimension(380, 100));
+
+        ratioInputPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Tasa de Cambio (EUR -> USD)"));
+
+        ratioInputField.setFormatterFactory(new AbstractFormatterFactory() {
+
+            @Override
+            public AbstractFormatter getFormatter(JFormattedTextField tf) {
+                NumberFormat format = DecimalFormat.getInstance();
+                format.setMinimumFractionDigits(2);
+                format.setMaximumFractionDigits(2);
+                format.setRoundingMode(RoundingMode.HALF_UP);
+                InternationalFormatter formatter = new InternationalFormatter(format);
+                formatter.setAllowsInvalid(false);
+                formatter.setMinimum(0.0);
+                formatter.setMaximum(10000.0);
+                return formatter;
+            }
+        });
+        ratioInputField.setText("0,00");
+
+        javax.swing.GroupLayout ratioInputPanelLayout = new javax.swing.GroupLayout(ratioInputPanel);
+        ratioInputPanel.setLayout(ratioInputPanelLayout);
+        ratioInputPanelLayout.setHorizontalGroup(
+            ratioInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ratioInputField, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+        );
+        ratioInputPanelLayout.setVerticalGroup(
+            ratioInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ratioInputField, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+        );
+
+        convertButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        convertButton.setAlignmentX(0.5F);
+        convertButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        convertButton.setDefaultCapable(false);
+        convertButton.setLabel("€ >> $");
+        convertButton.setMaximumSize(new java.awt.Dimension(58, 58));
+        convertButton.setMinimumSize(new java.awt.Dimension(58, 58));
+        convertButton.setPreferredSize(new java.awt.Dimension(60, 60));
+        convertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                convertButtonActionPerformed(evt);
+            }
+        });
+
+        convertButton2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        convertButton2.setAlignmentX(0.5F);
+        convertButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        convertButton2.setDefaultCapable(false);
+        convertButton2.setLabel("$ >> € ");
+        convertButton2.setMaximumSize(new java.awt.Dimension(58, 58));
+        convertButton2.setMinimumSize(new java.awt.Dimension(58, 58));
+        convertButton2.setPreferredSize(new java.awt.Dimension(60, 60));
+        convertButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                convertButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout upperPanelLayout = new javax.swing.GroupLayout(upperPanel);
+        upperPanel.setLayout(upperPanelLayout);
+        upperPanelLayout.setHorizontalGroup(
+            upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(upperPanelLayout.createSequentialGroup()
+                .addComponent(ratioInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(convertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(convertButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        upperPanelLayout.setVerticalGroup(
+            upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(upperPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(convertButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(convertButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upperPanelLayout.createSequentialGroup()
+                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addComponent(ratioInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        convertButton2.getAccessibleContext().setAccessibleName("$ >> € ");
+
+        rightResultPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
+        rightResultPanel.setPreferredSize(new java.awt.Dimension(320, 64));
+
+        rightResultField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        rightResultField.setBorder(null);
+        rightResultField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        rightResultField.setEnabled(false);
+
+        javax.swing.GroupLayout rightResultPanelLayout = new javax.swing.GroupLayout(rightResultPanel);
+        rightResultPanel.setLayout(rightResultPanelLayout);
+        rightResultPanelLayout.setHorizontalGroup(
+            rightResultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rightResultField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+        );
+        rightResultPanelLayout.setVerticalGroup(
+            rightResultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rightResultField, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+        );
 
         amountInputPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Cantidad\n"));
         amountInputPanel.setPreferredSize(new java.awt.Dimension(350, 64));
@@ -81,160 +183,36 @@ public class practica_2 extends javax.swing.JFrame {
                 return formatter;
             }
         });
+        amountInputField.setText("0,00");
 
         javax.swing.GroupLayout amountInputPanelLayout = new javax.swing.GroupLayout(amountInputPanel);
         amountInputPanel.setLayout(amountInputPanelLayout);
         amountInputPanelLayout.setHorizontalGroup(
             amountInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(amountInputField, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+            .addComponent(amountInputField, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
         );
         amountInputPanelLayout.setVerticalGroup(
             amountInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(amountInputField, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+            .addComponent(amountInputField)
         );
-
-        ratioInputPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Tasa de Cambio (EUR -> USD)"));
-
-        ratioInputField.setFormatterFactory(new AbstractFormatterFactory() {
-
-            @Override
-            public AbstractFormatter getFormatter(JFormattedTextField tf) {
-                NumberFormat format = DecimalFormat.getInstance();
-                format.setMinimumFractionDigits(2);
-                format.setMaximumFractionDigits(2);
-                format.setRoundingMode(RoundingMode.HALF_UP);
-                InternationalFormatter formatter = new InternationalFormatter(format);
-                formatter.setAllowsInvalid(false);
-                formatter.setMinimum(0.0);
-                formatter.setMaximum(10000.0);
-                return formatter;
-            }
-        });
-
-        javax.swing.GroupLayout ratioInputPanelLayout = new javax.swing.GroupLayout(ratioInputPanel);
-        ratioInputPanel.setLayout(ratioInputPanelLayout);
-        ratioInputPanelLayout.setHorizontalGroup(
-            ratioInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ratioInputField)
-        );
-        ratioInputPanelLayout.setVerticalGroup(
-            ratioInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ratioInputField)
-        );
-
-        javax.swing.GroupLayout upperPanelLayout = new javax.swing.GroupLayout(upperPanel);
-        upperPanel.setLayout(upperPanelLayout);
-        upperPanelLayout.setHorizontalGroup(
-            upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(upperPanelLayout.createSequentialGroup()
-                .addComponent(amountInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ratioInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        upperPanelLayout.setVerticalGroup(
-            upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(upperPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(amountInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ratioInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-
-        convertButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        convertButton.setText(">>");
-        convertButton.setAlignmentX(0.5F);
-        convertButton.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
-        convertButton.setDefaultCapable(false);
-        convertButton.setMaximumSize(new java.awt.Dimension(58, 58));
-        convertButton.setMinimumSize(new java.awt.Dimension(58, 58));
-        convertButton.setPreferredSize(new java.awt.Dimension(60, 60));
-        convertButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                convertButtonActionPerformed(evt);
-            }
-        });
-
-        rightResultPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Dolares"));
-        rightResultPanel.setPreferredSize(new java.awt.Dimension(320, 64));
-
-        rightResultField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        rightResultField.setBorder(null);
-        rightResultField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        rightResultField.setEnabled(false);
-
-        javax.swing.GroupLayout rightResultPanelLayout = new javax.swing.GroupLayout(rightResultPanel);
-        rightResultPanel.setLayout(rightResultPanelLayout);
-        rightResultPanelLayout.setHorizontalGroup(
-            rightResultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rightResultField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-        );
-        rightResultPanelLayout.setVerticalGroup(
-            rightResultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rightResultField)
-        );
-
-        leftResultPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Euros"));
-        leftResultPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        leftResultPanel.setPreferredSize(new java.awt.Dimension(320, 64));
-
-        leftResultField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        leftResultField.setBorder(null);
-        leftResultField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        leftResultField.setEnabled(false);
-
-        javax.swing.GroupLayout leftResultPanelLayout = new javax.swing.GroupLayout(leftResultPanel);
-        leftResultPanel.setLayout(leftResultPanelLayout);
-        leftResultPanelLayout.setHorizontalGroup(
-            leftResultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(leftResultField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-        );
-        leftResultPanelLayout.setVerticalGroup(
-            leftResultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(leftResultField, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-        );
-
-        convertButton2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        convertButton2.setText("<<");
-        convertButton2.setAlignmentX(0.5F);
-        convertButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
-        convertButton2.setDefaultCapable(false);
-        convertButton2.setMaximumSize(new java.awt.Dimension(58, 58));
-        convertButton2.setMinimumSize(new java.awt.Dimension(58, 58));
-        convertButton2.setPreferredSize(new java.awt.Dimension(60, 60));
-        convertButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                convertButton2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout lowerPanelLayout = new javax.swing.GroupLayout(lowerPanel);
         lowerPanel.setLayout(lowerPanelLayout);
         lowerPanelLayout.setHorizontalGroup(
             lowerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lowerPanelLayout.createSequentialGroup()
-                .addComponent(leftResultPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(amountInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(lowerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(convertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(convertButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rightResultPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(rightResultPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         lowerPanelLayout.setVerticalGroup(
             lowerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(lowerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(lowerPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(convertButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rightResultPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, lowerPanelLayout.createSequentialGroup()
-                        .addGroup(lowerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(leftResultPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(convertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(amountInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(rightResultPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -246,7 +224,7 @@ public class practica_2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lowerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(upperPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE))
+                    .addComponent(upperPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -255,13 +233,12 @@ public class practica_2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(upperPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lowerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lowerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         languageBar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        esOpt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        esOpt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         esOpt.setLabel("ES");
         esOpt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -270,7 +247,6 @@ public class practica_2 extends javax.swing.JFrame {
         });
         languageBar.add(esOpt);
 
-        enOpt.setActionCommand("");
         enOpt.setBorderPainted(true);
         enOpt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         enOpt.setLabel("EN");
@@ -287,7 +263,7 @@ public class practica_2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 764, Short.MAX_VALUE)
+            .addGap(0, 802, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -323,7 +299,7 @@ public class practica_2 extends javax.swing.JFrame {
     private void enOptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enOptMouseClicked
         this.amountInputPanel.setBorder(BorderFactory.createTitledBorder("Amount"));
         this.ratioInputPanel.setBorder(BorderFactory.createTitledBorder("Change Ratio (EUR -> USD)"));
-        this.rightResultPanel.setBorder(BorderFactory.createTitledBorder("Dollars"));
+        this.rightResultPanel.setBorder(BorderFactory.createTitledBorder("Result"));
         this.esOpt.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         this.enOpt.setFont(new Font("Segoe UI", Font.BOLD, 18));
     }//GEN-LAST:event_enOptMouseClicked
@@ -331,7 +307,7 @@ public class practica_2 extends javax.swing.JFrame {
     private void esOptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esOptMouseClicked
         this.amountInputPanel.setBorder(BorderFactory.createTitledBorder("Cantidad"));
         this.ratioInputPanel.setBorder(BorderFactory.createTitledBorder("Tasa de cambio (EUR -> USD)"));
-        this.rightResultPanel.setBorder(BorderFactory.createTitledBorder("Dólares"));
+        this.rightResultPanel.setBorder(BorderFactory.createTitledBorder("Resultado"));
         this.esOpt.setFont(new Font("Segoe UI", Font.BOLD, 18));
         this.enOpt.setFont(new Font("Segoe UI", Font.PLAIN, 18));
     }//GEN-LAST:event_esOptMouseClicked
@@ -357,20 +333,22 @@ public class practica_2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(practica_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(practica_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(practica_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(practica_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conversor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new practica_2().setVisible(true);
+                new Conversor().setVisible(true);
             }
         });
     }
@@ -384,8 +362,6 @@ public class practica_2 extends javax.swing.JFrame {
     private javax.swing.JMenu esOpt;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuBar languageBar;
-    private javax.swing.JTextField leftResultField;
-    private javax.swing.JPanel leftResultPanel;
     private javax.swing.JPanel lowerPanel;
     private javax.swing.JFormattedTextField ratioInputField;
     private javax.swing.JPanel ratioInputPanel;
@@ -396,14 +372,14 @@ public class practica_2 extends javax.swing.JFrame {
 
     //Logic functions
     private void dollarsToEuros() {
-        this.rightResultField.setText(this.getAmountFieldToText()+ " USD ($)");
-        this.leftResultField.setText(String.format("%,.2f", this.convertUsdToEur())+ " EUR (€)");
+        this.rightResultField.setText(String.format("%,.2f", this.convertUsdToEur())+ " EUR (€)");
+        this.amountInputField.setText(getAmountFieldToText());
         updateFxRL();
     }
 
     private void eurosToDollars() {
-        this.leftResultField.setText(this.getAmountFieldToText()+ " EUR (€)");
         this.rightResultField.setText(String.format("%,.2f", this.convertEurToUsd()) + " USD ($)");
+        this.amountInputField.setText(getAmountFieldToText());
         updateFxLR();
     }
     
